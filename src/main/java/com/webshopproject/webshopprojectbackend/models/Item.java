@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Item {
@@ -13,9 +14,16 @@ public class Item {
     private long itemId;
     private String name;
     private int inStock;
-
-
-//    private boolean isActive;
+    private String description;
+    private boolean isActive;
+    private String category;
+//    private boolean isPriceBasedOnWeight; //Make if statement in angular html and boolean in ts file
+    private double priceForOneItem; //double or string? might want to add 100kr. pr kilo
+    private String weightMeasurement; //This is used for priceBasedOnWeight. For example g or kg
+    private String priceBasedOnWeight;
+    private Date dateTimeCreated;
+    private Date dateTimeEdited;
+    private Date expirationDate;
 
     //Add picture
     //@Lob
@@ -52,11 +60,29 @@ public class Item {
         this.inStock = inStock;
     }
 
-//    public boolean isActive() {
-//        return isActive;
-//    }
-//
-//    public void setActive(boolean active) {
-//        isActive = active;
-//    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+
 }
