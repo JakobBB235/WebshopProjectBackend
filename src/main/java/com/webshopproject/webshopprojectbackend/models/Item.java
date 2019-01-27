@@ -1,10 +1,11 @@
 package com.webshopproject.webshopprojectbackend.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Item {
@@ -15,22 +16,33 @@ public class Item {
     private String name;
     private int inStock;
     private String description;
+    //summary?
     private boolean isActive;
     private String category;
 //    private boolean isPriceBasedOnWeight; //Make if statement in angular html and boolean in ts file
     private double priceForOneItem; //double or string? might want to add 100kr. pr kilo
     private String weightMeasurement; //This is used for priceBasedOnWeight. For example g or kg
-    private String priceBasedOnWeight;
+    private double priceBasedOnWeight;
+
+    @CreationTimestamp //Hibernate annotation
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateTimeCreated;
+
+    @UpdateTimestamp //Hibernate annotation
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateTimeEdited;
+
+    @Temporal(TemporalType.DATE)
     private Date expirationDate;
+
+    //canBeCollected
 
     //Add picture
     //@Lob
-    //private byte[] thumpNail;
+//    private byte[] thumpNail;
 
     //@Lob
-    //private List<byte[]> images;
+//    private List<byte[]> images;
 
     //Relations
 
@@ -84,5 +96,51 @@ public class Item {
         this.category = category;
     }
 
+    public double getPriceForOneItem() {
+        return priceForOneItem;
+    }
 
+    public void setPriceForOneItem(double priceForOneItem) {
+        this.priceForOneItem = priceForOneItem;
+    }
+
+    public String getWeightMeasurement() {
+        return weightMeasurement;
+    }
+
+    public void setWeightMeasurement(String weightMeasurement) {
+        this.weightMeasurement = weightMeasurement;
+    }
+
+    public double getPriceBasedOnWeight() {
+        return priceBasedOnWeight;
+    }
+
+    public void setPriceBasedOnWeight(double priceBasedOnWeight) {
+        this.priceBasedOnWeight = priceBasedOnWeight;
+    }
+
+    public Date getDateTimeCreated() {
+        return dateTimeCreated;
+    }
+
+    public void setDateTimeCreated(Date dateTimeCreated) {
+        this.dateTimeCreated = dateTimeCreated;
+    }
+
+    public Date getDateTimeEdited() {
+        return dateTimeEdited;
+    }
+
+    public void setDateTimeEdited(Date dateTimeEdited) {
+        this.dateTimeEdited = dateTimeEdited;
+    }
+
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
+    }
 }

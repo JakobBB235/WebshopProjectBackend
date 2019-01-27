@@ -4,6 +4,7 @@ import com.webshopproject.webshopprojectbackend.models.Item;
 import com.webshopproject.webshopprojectbackend.repositories.ItemRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -41,7 +42,7 @@ public class ItemServiceImpl implements ItemService{
 //        oldItem.setInStock(item.getInStock());
 //        oldItem.setName(item.getName());
 //        itemRepository.save(oldItem);
-
+        item.setDateTimeEdited(new Date());
         itemRepository.save(item);
     }
 }
