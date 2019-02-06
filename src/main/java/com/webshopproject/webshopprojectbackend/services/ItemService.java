@@ -10,4 +10,5 @@ public interface ItemService {
     List<Item> getAllItems();
     void deleteItem(long id);
     void updateItem(Item item);
+//    List<Item> myItems(int userId);
 }

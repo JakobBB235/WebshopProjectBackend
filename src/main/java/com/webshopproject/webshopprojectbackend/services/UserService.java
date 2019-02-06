@@ -7,4 +7,8 @@ public interface UserService {
     User createNewUser(User user);
     void updateUser(User user);
     void deleteUser(long id);
+    void disableUser(long id);
+    void enableUser(long id);
+
+    User login(User user);
 }

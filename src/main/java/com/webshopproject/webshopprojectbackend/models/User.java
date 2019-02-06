@@ -1,6 +1,7 @@
 package com.webshopproject.webshopprojectbackend.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -20,7 +21,8 @@ public class User {
     //
 
     //Relations
-
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Item> items;
 
     //Getters and setters
     public long getUserId() {
@@ -69,5 +71,13 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }

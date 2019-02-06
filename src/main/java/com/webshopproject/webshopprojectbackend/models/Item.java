@@ -45,7 +45,8 @@ public class Item {
 //    private List<byte[]> images;
 
     //Relations
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 
     //Getters and setters
     public long getItemId() {
@@ -142,5 +143,13 @@ public class Item {
 
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
