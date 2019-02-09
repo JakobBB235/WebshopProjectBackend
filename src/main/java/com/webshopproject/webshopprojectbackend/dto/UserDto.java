@@ -1,44 +1,32 @@
-package com.webshopproject.webshopprojectbackend.models;
+package com.webshopproject.webshopprojectbackend.dto;
 
-import com.webshopproject.webshopprojectbackend.dto.UserDto;
+import com.webshopproject.webshopprojectbackend.models.Item;
+import com.webshopproject.webshopprojectbackend.models.User;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-public class User {
+public class UserDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long userId;
-
-    @Column(unique = true)
     private String username;
     private String password;
     private String email;
     private String role;
     private boolean enabled;
-    //address
-    //phoneNumber
-    //
-
-    //Relations
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     private List<Item> items;
 
-    public UserDto convertToDto(){
-        UserDto userToView = new UserDto();
-        userToView.setUserId(this.getUserId());
-        userToView.setUsername(this.getUsername());
-//        userToView.setPassword(this.getPassword());
-        userToView.setEmail(this.getEmail());
-        userToView.setRole(this.getRole());
-        userToView.setEnabled(this.isEnabled());
+    public User convertToUser(){ //is this needed?
+        User theUser = new User();
+        theUser.setUserId(this.getUserId());
+        theUser.setUsername(this.getUsername());
+        theUser.setPassword(this.getPassword());
+        theUser.setEmail(this.getEmail());
+        theUser.setRole(this.getRole());
+        theUser.setEnabled(this.isEnabled());
 
-        return userToView;
+        return theUser;
     }
 
-    //Getters and setters
     public long getUserId() {
         return userId;
     }

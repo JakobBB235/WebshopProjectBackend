@@ -1,71 +1,41 @@
-package com.webshopproject.webshopprojectbackend.models;
+package com.webshopproject.webshopprojectbackend.dto;
 
-import com.webshopproject.webshopprojectbackend.dto.ItemDto;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.webshopproject.webshopprojectbackend.models.Item;
 
-import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
-@Entity
-public class Item {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class ItemDto {
     private long itemId;
     private String name;
     private int inStock;
     private String description;
-    //summary?
     private boolean isActive;
     private String category;
-//    private boolean isPriceBasedOnWeight; //Make if statement in angular html and boolean in ts file
     private double priceForOneItem; //double or string? might want to add 100kr. pr kilo
     private String weightMeasurement; //This is used for priceBasedOnWeight. For example g or kg
     private double priceBasedOnWeight;
-
-    @CreationTimestamp //Hibernate annotation
-    @Temporal(TemporalType.TIMESTAMP)
     private Date dateTimeCreated;
-
-    @UpdateTimestamp //Hibernate annotation
-    @Temporal(TemporalType.TIMESTAMP)
     private Date dateTimeEdited;
-
-    @Temporal(TemporalType.DATE)
     private Date expirationDate;
+    private long userId;
 
-    //canBeCollected
+    public Item convertToItem(){ //is this needed?
+        Item theUser = new Item();
+        theUser.setItemId(this.getItemId());
+        theUser.setInStock(this.getInStock());
+        theUser.setDescription(this.getDescription());
+        theUser.setActive(this.isActive());
+        theUser.setCategory(this.getCategory());
+        theUser.setPriceForOneItem(this.getPriceForOneItem());
+        theUser.setWeightMeasurement(this.getWeightMeasurement());
+        theUser.setPriceBasedOnWeight(this.priceBasedOnWeight);
+        theUser.setDateTimeCreated(this.getDateTimeCreated());
+        theUser.setDateTimeEdited(this.getDateTimeEdited());
+        theUser.setExpirationDate(this.getExpirationDate());
 
-    //Add picture
-    //@Lob
-//    private byte[] thumpNail;
-
-    //@Lob
-//    private List<byte[]> images;
-
-    //Relations
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
-
-    public ItemDto convertToDto(){
-        ItemDto itemToView = new ItemDto();
-        itemToView.setItemId(this.getItemId());
-        itemToView.setInStock(this.getInStock());
-        itemToView.setDescription(this.getDescription());
-        itemToView.setActive(this.isActive());
-        itemToView.setCategory(this.getCategory());
-        itemToView.setPriceForOneItem(this.getPriceForOneItem());
-        itemToView.setWeightMeasurement(this.getWeightMeasurement());
-        itemToView.setPriceBasedOnWeight(this.getPriceBasedOnWeight());
-        itemToView.setDateTimeCreated(this.getDateTimeCreated());
-        itemToView.setDateTimeEdited(this.getDateTimeEdited());
-        itemToView.setExpirationDate(this.getExpirationDate());
-
-        return itemToView;
+        return theUser;
     }
-    //Getters and setters
+
     public long getItemId() {
         return itemId;
     }
@@ -162,11 +132,11 @@ public class Item {
         this.expirationDate = expirationDate;
     }
 
-    public User getUser() {
-        return user;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }
