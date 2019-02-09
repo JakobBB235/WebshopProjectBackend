@@ -20,20 +20,21 @@ public class ItemDto {
     private long userId;
 
     public Item convertToItem(){ //is this needed?
-        Item theUser = new Item();
-        theUser.setItemId(this.getItemId());
-        theUser.setInStock(this.getInStock());
-        theUser.setDescription(this.getDescription());
-        theUser.setActive(this.isActive());
-        theUser.setCategory(this.getCategory());
-        theUser.setPriceForOneItem(this.getPriceForOneItem());
-        theUser.setWeightMeasurement(this.getWeightMeasurement());
-        theUser.setPriceBasedOnWeight(this.priceBasedOnWeight);
-        theUser.setDateTimeCreated(this.getDateTimeCreated());
-        theUser.setDateTimeEdited(this.getDateTimeEdited());
-        theUser.setExpirationDate(this.getExpirationDate());
+        Item theItem = new Item();
+        theItem.setItemId(this.getItemId());
+        theItem.setName(this.getName());
+        theItem.setInStock(this.getInStock());
+        theItem.setDescription(this.getDescription());
+        theItem.setActive(this.isActive());
+        theItem.setCategory(this.getCategory());
+        theItem.setPriceForOneItem(this.getPriceForOneItem());
+        theItem.setWeightMeasurement(this.getWeightMeasurement());
+        theItem.setPriceBasedOnWeight(this.getPriceBasedOnWeight());
+        theItem.setDateTimeCreated(this.getDateTimeCreated());
+        theItem.setDateTimeEdited(this.getDateTimeEdited());
+        theItem.setExpirationDate(this.getExpirationDate());
 
-        return theUser;
+        return theItem;
     }
 
     public long getItemId() {

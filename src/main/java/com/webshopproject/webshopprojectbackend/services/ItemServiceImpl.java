@@ -52,7 +52,7 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public ItemDto addItem(ItemDto itemDto) {
         Item item = itemDto.convertToItem();
-        return itemRepository.save(item);
+        return itemRepository.save(item).convertToDto();
     }
 
     @Override
