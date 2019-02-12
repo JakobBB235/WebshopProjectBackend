@@ -106,7 +106,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void updateUser(UserDto userDto) {
-
+        //Make sure that correct item list is set
     }
 
     @Override

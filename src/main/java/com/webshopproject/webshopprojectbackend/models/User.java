@@ -5,6 +5,8 @@ import com.webshopproject.webshopprojectbackend.dto.UserDto;
 import javax.persistence.*;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 @Entity
 public class User {
 
@@ -23,7 +25,8 @@ public class User {
     //
 
     //Relations
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<Item> items;
 
     public UserDto convertToDto(){
@@ -34,6 +37,8 @@ public class User {
         userToView.setEmail(this.getEmail());
         userToView.setRole(this.getRole());
         userToView.setEnabled(this.isEnabled());
+//        userToView.setItems(this.getItems()); //Convert items to DTO instead.
+        userToView.setItems(this.getItems().stream().map(Item::convertToDto).collect(toList()));
 
         return userToView;
     }

@@ -13,7 +13,7 @@ public class UserDto {
     private String email;
     private String role;
     private boolean enabled;
-    private List<Item> items;
+    private List<ItemDto> items;
 
     public User convertToUser(){ //is this needed?
         User theUser = new User();
@@ -75,11 +75,11 @@ public class UserDto {
         this.enabled = enabled;
     }
 
-    public List<Item> getItems() {
+    public List<ItemDto> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<ItemDto> items) {
         this.items = items;
     }
 }

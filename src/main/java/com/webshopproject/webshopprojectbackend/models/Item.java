@@ -52,6 +52,7 @@ public class Item {
     public ItemDto convertToDto(){
         ItemDto itemToView = new ItemDto();
         itemToView.setItemId(this.getItemId());
+        itemToView.setName(this.getName());
         itemToView.setInStock(this.getInStock());
         itemToView.setDescription(this.getDescription());
         itemToView.setActive(this.isActive());
@@ -62,6 +63,7 @@ public class Item {
         itemToView.setDateTimeCreated(this.getDateTimeCreated());
         itemToView.setDateTimeEdited(this.getDateTimeEdited());
         itemToView.setExpirationDate(this.getExpirationDate());
+//        itemToView.setUserId(this.getUser().getUserId());
 
         return itemToView;
     }
