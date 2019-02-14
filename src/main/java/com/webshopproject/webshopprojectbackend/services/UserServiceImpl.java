@@ -130,7 +130,7 @@ public class UserServiceImpl implements UserService{
     public void enableUser(long id) {
         User theUser = userRepository.findById(id).orElse(null);
         try {
-            theUser.setEnabled(true);
+            theUser.setEnabled(true); //Will cause nullpointer error if user is not found
             userRepository.save(theUser);
         }
         catch (NullPointerException e){
@@ -140,8 +140,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDto login(UserDto userDto) {
-        //Try to get user with username and password
-        User foundUser = userRepository.findByUsernameAndPassword(userDto.getUsername(), userDto.getPassword());
-        return foundUser.convertToDto();
+        return userRepository.findByUsernameAndPassword(userDto.getUsername(), userDto.getPassword()).convertToDto();
     }
 }

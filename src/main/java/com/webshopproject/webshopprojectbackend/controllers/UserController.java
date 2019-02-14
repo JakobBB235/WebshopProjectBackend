@@ -2,7 +2,9 @@ package com.webshopproject.webshopprojectbackend.controllers;
 
 import com.webshopproject.webshopprojectbackend.dto.UserDto;
 import com.webshopproject.webshopprojectbackend.services.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -63,6 +65,12 @@ public class UserController {
     //Login
     @PostMapping("/user/login")
     public UserDto login(@RequestBody UserDto user){
-        return userService.login(user);
+        //This approach works well for REST
+        try {
+            return userService.login(user);
+        }
+        catch (NullPointerException e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found", e);
+        }
     }
 }

@@ -55,7 +55,7 @@ public class Item {
         itemToView.setName(this.getName());
         itemToView.setInStock(this.getInStock());
         itemToView.setDescription(this.getDescription());
-        itemToView.setActive(this.isActive());
+        itemToView.setActive(this.isActive()); //Should be true, is false when console.logged
         itemToView.setCategory(this.getCategory());
         itemToView.setPriceForOneItem(this.getPriceForOneItem());
         itemToView.setWeightMeasurement(this.getWeightMeasurement());
@@ -63,7 +63,7 @@ public class Item {
         itemToView.setDateTimeCreated(this.getDateTimeCreated());
         itemToView.setDateTimeEdited(this.getDateTimeEdited());
         itemToView.setExpirationDate(this.getExpirationDate());
-//        itemToView.setUserId(this.getUser().getUserId());
+        itemToView.setUserId(this.getUser().getUserId());
 
         return itemToView;
     }
