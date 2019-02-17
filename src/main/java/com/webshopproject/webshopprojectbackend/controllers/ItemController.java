@@ -76,6 +76,7 @@ public class ItemController {
 
     @PutMapping("/item/{id}")
     public void updateItem(@RequestBody ItemDto item, @PathVariable Long id){ //params correct?
+        System.out.println("Update endpoint");
         itemService.updateItem(item);
     }
 

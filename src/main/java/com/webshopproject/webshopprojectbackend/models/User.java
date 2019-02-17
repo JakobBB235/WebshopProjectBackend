@@ -43,6 +43,21 @@ public class User {
         return userToView;
     }
 
+    //Delete method in userdto
+//    public void convertToUser(){
+//
+//    }
+
+//    public void addItem(Item item){
+//        this.items.add(item);
+//        item.setUser(this);
+//    }
+//
+//    public void removeItem(Item item){
+//        this.items.remove(item);
+//        item.setUser(null);
+//    }
+
     //Getters and setters
     public long getUserId() {
         return userId;

@@ -17,11 +17,12 @@ public class UserDto {
 
     public User convertToUser(){ //is this needed?
         User theUser = new User();
-        theUser.setUserId(this.getUserId());
+//        theUser.setUserId(this.getUserId());
+        //Check if value is not null?
         theUser.setUsername(this.getUsername());
         theUser.setPassword(this.getPassword());
         theUser.setEmail(this.getEmail());
-        theUser.setRole(this.getRole());
+//        theUser.setRole(this.getRole());
         theUser.setEnabled(this.isEnabled());
 
         return theUser;

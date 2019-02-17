@@ -67,6 +67,31 @@ public class Item {
 
         return itemToView;
     }
+
+    //Delete method in itemdto? Used to update item
+    public void convertToItem(ItemDto itemDto){
+        this.name = itemDto.getName();
+        this.inStock = itemDto.getInStock();
+        this.description = itemDto.getDescription();
+        this.isActive = itemDto.isActive();
+        this.category = itemDto.getCategory();
+        this.priceForOneItem = itemDto.getPriceForOneItem();
+        this.weightMeasurement = itemDto.getWeightMeasurement();
+        this.priceBasedOnWeight = itemDto.getPriceBasedOnWeight();
+    }
+
+    public void addOwner(User owner){
+        List<Item> items = owner.getItems();
+        items.add(this);
+        owner.setItems(items);
+        this.user = owner;
+    }
+
+//    public void removeOwner(Item item){
+//        this.items.remove(item);
+//        item.setUser(null);
+//    }
+
     //Getters and setters
     public long getItemId() {
         return itemId;

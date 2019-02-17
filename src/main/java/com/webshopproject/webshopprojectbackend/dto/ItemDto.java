@@ -19,9 +19,11 @@ public class ItemDto {
     private Date expirationDate;
     private long userId;
 
+    //Add new item item
     public Item convertToItem(){ //is this needed?
         Item theItem = new Item();
-        theItem.setItemId(this.getItemId());
+//        theItem.setItemId(this.getItemId());
+        //Check if value is not null?
         theItem.setName(this.getName());
         theItem.setInStock(this.getInStock());
         theItem.setDescription(this.getDescription());
@@ -30,8 +32,8 @@ public class ItemDto {
         theItem.setPriceForOneItem(this.getPriceForOneItem());
         theItem.setWeightMeasurement(this.getWeightMeasurement());
         theItem.setPriceBasedOnWeight(this.getPriceBasedOnWeight());
-        theItem.setDateTimeCreated(this.getDateTimeCreated());
-        theItem.setDateTimeEdited(this.getDateTimeEdited());
+//        theItem.setDateTimeCreated(this.getDateTimeCreated());
+//        theItem.setDateTimeEdited(this.getDateTimeEdited());
         theItem.setExpirationDate(this.getExpirationDate());
 
         return theItem;
